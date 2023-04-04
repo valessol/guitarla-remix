@@ -1,6 +1,8 @@
 import React from "react";
-import { Meta, Links } from "@remix-run/react";
-import styles from "./styles/index.css";
+import { Meta, Links, Outlet, LiveReload, Scripts } from "@remix-run/react";
+import styles from "~/styles/index.css";
+import Header from "~/components/header";
+import Footer from "~/components/Footer";
 
 export const meta = () => {
   return [
@@ -39,21 +41,28 @@ export const links = () => {
 const App = () => {
   return (
     <Document>
-      <h1>Title</h1>
+      <Outlet />
     </Document>
   );
 };
 
-const Document = ({ children }) => {
+function Document({ children }) {
   return (
     <html lang="es">
       <head>
         <Meta />
         <Links />
       </head>
-      <body>{children}</body>
+      <body>
+        <Header />
+        {children}
+        <Footer />
+        <LiveReload />
+
+        <Scripts />
+      </body>
     </html>
   );
-};
+}
 
 export default App;
