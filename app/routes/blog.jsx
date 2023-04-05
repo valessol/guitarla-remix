@@ -4,6 +4,15 @@ import { getAllPosts } from "~/api/blog.server";
 import Post from "~/components/post";
 import styles from "~/styles/blog.css";
 
+export const meta = () => {
+  return [
+    { title: `GuitarLA - Nuestro blog"}` },
+    {
+      description: `Guitarras, blog de música y venta de guitarras`,
+    },
+  ];
+};
+
 export const links = () => {
   return [
     {

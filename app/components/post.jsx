@@ -2,7 +2,7 @@ import { Link } from "@remix-run/react";
 import { formatDate } from "~/utils/helpers";
 
 const Post = ({ post }) => {
-  const { id, content, timestamp, title, url, imageUrl } = post;
+  const { id, content, timestamp, title, imageUrl } = post;
 
   return (
     <article className="post">

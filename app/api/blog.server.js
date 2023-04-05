@@ -19,7 +19,7 @@ export const getPostById = async (id) => {
   if (!Object.keys(data).length)
     throw new Response("", {
       status: 404,
-      statusText: "El producto seleccionado no existe",
+      statusText: "Entrada no encontrada",
     });
 
   const formatData = () => {
