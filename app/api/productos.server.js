@@ -16,6 +16,12 @@ export const getProductById = async (id) => {
   const fetchedData = await fetch(`${process.env.API_URL}/products/${id}`);
   const data = await fetchedData.json();
 
+  if (!Object.keys(data).length)
+    throw new Response("", {
+      status: 404,
+      statusText: "El producto seleccionado no existe",
+    });
+
   const formatData = () => {
     return {
       ...data,

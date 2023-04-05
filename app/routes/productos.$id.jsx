@@ -2,10 +2,21 @@ import { useLoaderData } from "@remix-run/react";
 import { getProductById } from "../api/productos.server";
 import styles from "~/styles/guitarras.css";
 
+export const loader = async ({ params }) => {
+  const { id } = params;
+  const data = await getProductById(id);
+
+  return data;
+};
+
 export const meta = ({ data }) => {
   return [
-    { title: `GuitarLA - ${data.title}` },
-    { description: `Guitarras, venta de guitarras, guitarra ${data.title}` },
+    { title: `GuitarLA - ${data ? data.title : "Guitarra no encontrada"}` },
+    {
+      description: `Guitarras, venta de guitarras, guitarra ${
+        data ? data.title : ""
+      }`,
+    },
   ];
 };
 
@@ -16,11 +27,6 @@ export const links = () => {
       href: styles,
     },
   ];
-};
-
-export const loader = async ({ params }) => {
-  const { id } = params;
-  return await getProductById(id);
 };
 
 const Guitarra = () => {
