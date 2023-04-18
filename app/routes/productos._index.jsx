@@ -1,6 +1,5 @@
 import React from "react";
 import { useLoaderData } from "@remix-run/react";
-import styles from "~/styles/guitarras.css";
 import { getAllProducts } from "../api/productos.server";
 import ProductsList from "../components/productsList";
 
@@ -11,27 +10,14 @@ export const meta = () => {
   ];
 };
 
-export const links = () => {
-  return [
-    {
-      rel: "stylesheet",
-      href: styles,
-    },
-  ];
-};
-
 export const loader = async () => {
   return await getAllProducts();
 };
 
 const Tienda = () => {
   const data = useLoaderData();
-  console.log("tienda", data);
-  return (
-    <main className="contenedor">
-      <ProductsList data={data} />
-    </main>
-  );
+
+  return <ProductsList data={data} />;
 };
 
 export default Tienda;

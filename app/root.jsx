@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   Meta,
   Links,
@@ -47,9 +47,27 @@ export const links = () => {
 };
 
 const App = () => {
+  const [cart, setCart] = useState([]);
+
+  const addToCart = (item) => {
+    const existItem = cart.some((cartItem) => cartItem.id === item.id);
+
+    if (!cart.length) return setCart([item]);
+
+    const newCart = cart.map((cartItem) => {
+      if (existItem) {
+        cartItem.quantity = item.quantity;
+      }
+      return cartItem;
+    });
+
+    if (existItem) setCart(newCart);
+    else setCart([...newCart, item]);
+  };
+
   return (
     <Document>
-      <Outlet />
+      <Outlet context={{ addToCart, cart }} />
     </Document>
   );
 };
