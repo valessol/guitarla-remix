@@ -5,7 +5,7 @@ import styles from "~/styles/guitarras.css";
 export const loader = async ({ params }) => {
   const { id } = params;
   const data = await getProductById(id);
-
+  console.log({ data });
   return data;
 };
 
@@ -31,6 +31,7 @@ export const links = () => {
 
 const Guitarra = () => {
   const data = useLoaderData();
+  console.log({ data });
   const { id, description, price, title, imageUrl } = data;
   return (
     <main className="contenedor guitarra">

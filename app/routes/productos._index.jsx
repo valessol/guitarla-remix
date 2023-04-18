@@ -26,7 +26,7 @@ export const loader = async () => {
 
 const Tienda = () => {
   const data = useLoaderData();
-
+  console.log("tienda", data);
   return (
     <main className="contenedor">
       <ProductsList data={data} />
