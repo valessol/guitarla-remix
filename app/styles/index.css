@@ -2,6 +2,7 @@
     --primary: #e99401;
     --black: #262626;
     --white: #FFF;
+    --error: #db4c4c;
     --fuente-principal: 'Outfit', sans-serif;
   }
   html {
@@ -57,6 +58,7 @@
 
   .header .navegacion {
     display: flex;
+    align-items: center;
     gap: 2rem;
   }
 
@@ -69,6 +71,10 @@
     padding: .5rem;
     transition-property: background-color;
     transition-duration: 300ms;
+  }
+
+  .header .navegacion img {
+    width: 3rem;
   }
 
   .header .navegacion a:hover, .header .active {
@@ -97,13 +103,17 @@
     text-decoration: none;
     font-weight: 700;
   }
+
+  .footer .navegacion a:last-of-type {
+    display: none;
+  }
   
   .footer .copyright {
     text-align: center;
     font-weight: 400;
   }
 
-  .error, .error-enlace {
+  .error, .error-enlace, .error-message {
     font-size: 2rem;
     text-align: center;
     margin-top: 5rem;
@@ -133,6 +143,14 @@
 
  .enlace:hover {
     background-color: var(--primary);
+ }
+
+ .error-message {
+  background-color: var(--error);
+  color: var(--white);
+  padding: 1rem;
+  margin-top: 20px;
+  margin-bottom: 10px;
  }
 
   @media (min-width: 768px) {
