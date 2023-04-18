@@ -5,7 +5,7 @@ import { getAllProducts } from "../api/productos.server";
 import ProductsList from "../components/productsList";
 import PostsList from "../components/postsList";
 import Course from "../components/course";
-import guitarStyles from "~/styles/guitarras.css";
+import guitarStyles from "~/styles/productos.css";
 import blogStyles from "~/styles/blog.css";
 import courseStyles from "~/styles/course.css";
 
