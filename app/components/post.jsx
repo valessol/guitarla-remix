@@ -12,7 +12,7 @@ const Post = ({ post }) => {
         <p className="fecha">{formatDate(timestamp)}</p>
         <p className="resumen">{content}</p>
 
-        <Link className="enlace" to={`/posts/${id}`}>
+        <Link className="enlace" to={`/blog/${id}`}>
           Leer Post
         </Link>
       </div>
