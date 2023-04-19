@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   Meta,
   Links,
@@ -46,8 +46,16 @@ export const links = () => {
   ];
 };
 
+const initialState =
+  typeof window !== "undefined"
+    ? JSON.parse(localStorage.getItem("cart"))
+    : null;
 const App = () => {
-  const [cart, setCart] = useState([]);
+  const [cart, setCart] = useState(initialState || []);
+
+  useEffect(() => {
+    localStorage.setItem("cart", JSON.stringify(cart));
+  }, [cart]);
 
   const addToCart = (item) => {
     const existItem = cart.some((cartItem) => cartItem.id === item.id);
