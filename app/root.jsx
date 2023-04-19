@@ -55,7 +55,7 @@ const App = () => {
     if (!cart.length) return setCart([item]);
 
     const newCart = cart.map((cartItem) => {
-      if (existItem) {
+      if (cartItem.id === item.id) {
         cartItem.quantity = item.quantity;
       }
       return cartItem;
@@ -65,9 +65,14 @@ const App = () => {
     else setCart([...newCart, item]);
   };
 
+  const deleteFromCart = (id) => {
+    const newCart = cart.filter((item) => item.id !== id);
+    setCart(newCart);
+  };
+
   return (
     <Document>
-      <Outlet context={{ addToCart, cart }} />
+      <Outlet context={{ addToCart, cart, deleteFromCart }} />
     </Document>
   );
 };

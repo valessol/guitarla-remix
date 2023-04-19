@@ -23,38 +23,53 @@
     align-items: center;
     padding: 3rem 0;
     border-bottom: 1px solid #cfcfcf;
+    position: relative;
 }
 
 .item:last-of-type {
     border-bottom: none;
 }
 
+.select {
+    all: unset;
+    border: 1px solid #cfcfcf;
+    text-align: center;
+    width: 100%;
+    border-radius: 1rem;
+}
+
 .item p {
     margin: 0 0 1rem 0;
+    font-size: 1.8rem;
 }
 
 .item span {
     font-weight: 900;
-    font-size: 3.2rem;
+    font-size: 2.2rem;
 }
 
-.name {
+.item .name {
     font-weight: 700;
-    font-size: 4.2rem;
+    font-size: 2.2rem;
 }
 
-.price {
+.item .price {
+    margin-top: 1rem;
+    margin-bottom: 0;
     font-weight: 700;
     color: var(--primary);
 }
 
-.price span:last-of-type {
-    color: var(--black);
-    font-weight: 400;
+.item .subtotal {
+    font-size: 1.5rem;
 }
 
-.subtotal, .price span:last-of-type {
-    font-size: 2.2rem;
+.btn-delete {
+    all: unset;
+    position: absolute;
+    top: 3rem;
+    right: 1rem;
+    cursor: pointer;
 }
 
 @media (min-width: 768px) {
