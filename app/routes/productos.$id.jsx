@@ -23,7 +23,7 @@ export const meta = ({ data }) => {
 
 const Guitarra = () => {
   const [quantity, setQuantity] = useState(0);
-  const [error, setError] = useState(false);
+  const [message, setMessage] = useState({ state: false });
   const data = useLoaderData();
   const { id, description, price, title, imageUrl } = data;
 
@@ -33,13 +33,23 @@ const Guitarra = () => {
     const selectedQuantity = +e.target.value;
     setQuantity(selectedQuantity);
 
-    if (!selectedQuantity) setError(true);
-    else setError(false);
+    if (!selectedQuantity)
+      setMessage({
+        state: true,
+        text: "Selecciona una cantidad",
+        type: "error",
+      });
+    else setMessage({ ...message, state: false });
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (!quantity) return setError(true);
+    if (!quantity)
+      return setMessage({
+        state: true,
+        text: "Selecciona una cantidad",
+        type: "error",
+      });
     const selectedProduct = {
       id,
       title,
@@ -48,6 +58,7 @@ const Guitarra = () => {
       price,
     };
     addToCart(selectedProduct);
+    setMessage({ state: true, text: "Añadido al carrito", type: "success" });
   };
   return (
     <div className="guitarra">
@@ -60,8 +71,8 @@ const Guitarra = () => {
       <div className="contenido">
         <h3>{title}</h3>
         <p className="texto">{description}</p>
-        <p className="precio">{price}</p>
-        {error && <Message type="error">Selecciona una cantidad</Message>}
+        <p className="precio">$ {price}</p>
+        {message.state && <Message type={message.type}>{message.text}</Message>}
         <form onSubmit={handleSubmit} className="formulario">
           <label htmlFor="cantidad">Cantidad</label>
           <select name="cantidad" id="cantidad" onChange={handleChange}>

@@ -3,6 +3,7 @@
     --black: #262626;
     --white: #FFF;
     --error: #db4c4c;
+    --success: #4f9c40;
     --fuente-principal: 'Outfit', sans-serif;
   }
   html {
@@ -28,6 +29,22 @@
     width: min(95%, 120rem);
     margin: 3rem auto;
   }
+  .btn {
+    all: unset;
+    margin-top: 1rem;
+    background-color: var(--black);
+    color: var(--white);
+    text-transform: uppercase;
+    padding: 1.4rem;
+    font-weight: 700;
+    border: none;
+    transition-property: background-color;
+    transition-duration: 300ms;
+  }
+  .btn:hover {
+    cursor: pointer;
+    background-color: var(--primary);
+}
   [class*="heading"] {
     font-size: 4rem;
     text-align: center;
@@ -113,7 +130,7 @@
     font-weight: 400;
   }
 
-  .error, .error-enlace, .error-message {
+  .error, .error-enlace, .message {
     font-size: 2rem;
     text-align: center;
     margin-top: 5rem;
@@ -147,6 +164,14 @@
 
  .error-message {
   background-color: var(--error);
+  color: var(--white);
+  padding: 1rem;
+  margin-top: 20px;
+  margin-bottom: 10px;
+ }
+
+ .success-message {
+  background-color: var(--success);
   color: var(--white);
   padding: 1rem;
   margin-top: 20px;

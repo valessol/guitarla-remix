@@ -8,12 +8,22 @@
     padding: 3rem;
 }
 
+aside {
+    position: sticky;
+    top: 3rem;
+}
+
 .resume {
     background-color: #F9FaFB;
     padding: 3rem;
     border-radius: 1rem;
-    position: sticky;
-    top: 3rem;
+}
+
+.resume-btn {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+    justify-content: end;
 }
 
 .item {
@@ -75,5 +85,18 @@
 @media (min-width: 768px) {
     .contenido {
         grid-template-columns: 3fr 2fr;
+    }
+    .resume-btn {
+        flex-direction: column;
+    }
+
+    .resume-btn .btn {
+        margin-top: 0;
+    }
+}
+
+@media (min-width: 1280px) {
+    .resume-btn {
+        flex-direction: row;
     }
 }

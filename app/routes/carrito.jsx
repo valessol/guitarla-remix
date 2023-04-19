@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useOutletContext } from "@remix-run/react";
+import { Link, useOutletContext } from "@remix-run/react";
 import { ClientOnly } from "remix-utils";
 import styles from "~/styles/carrito.css";
 import CartItem from "../components/cartItem";
@@ -44,9 +44,19 @@ const Carrito = () => {
                 ? "Carrito vacío"
                 : cart.map((item) => <CartItem data={item} key={item.id} />)}
             </div>
-            <aside className="resume">
-              <h3>Resumen del pedido</h3>
-              <p>Total a pagar: ${total}</p>
+            <aside>
+              <div className="resume">
+                <h3>Resumen del pedido</h3>
+                <p>Total a pagar: ${total}</p>
+              </div>
+              <div className="resume-btn">
+                <button type="button" className="btn">
+                  Finalizar pedido
+                </button>
+                <Link to="/productos" className="btn">
+                  Seguir comprando
+                </Link>
+              </div>
             </aside>
           </div>
         </main>
