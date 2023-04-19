@@ -1,5 +1,6 @@
-import { useOutletContext } from "@remix-run/react";
 import { useEffect, useState } from "react";
+import { useOutletContext } from "@remix-run/react";
+import { ClientOnly } from "remix-utils";
 import styles from "~/styles/carrito.css";
 import CartItem from "../components/cartItem";
 
@@ -32,21 +33,25 @@ const Carrito = () => {
   }, [cart]);
 
   return (
-    <main className="contenedor">
-      <h1 className="heading">Carrito de compras</h1>
-      <div className="contenido">
-        <div className="cart">
-          <h2>Articulos</h2>
-          {!cart.length
-            ? "Carrito vacío"
-            : cart.map((item) => <CartItem data={item} key={item.id} />)}
-        </div>
-        <aside className="resume">
-          <h3>Resumen del pedido</h3>
-          <p>Total a pagar: ${total}</p>
-        </aside>
-      </div>
-    </main>
+    <ClientOnly fallback={"Cargando..."}>
+      {() => (
+        <main className="contenedor">
+          <h1 className="heading">Carrito de compras</h1>
+          <div className="contenido">
+            <div className="cart">
+              <h2>Articulos</h2>
+              {!cart.length
+                ? "Carrito vacío"
+                : cart.map((item) => <CartItem data={item} key={item.id} />)}
+            </div>
+            <aside className="resume">
+              <h3>Resumen del pedido</h3>
+              <p>Total a pagar: ${total}</p>
+            </aside>
+          </div>
+        </main>
+      )}
+    </ClientOnly>
   );
 };
 
